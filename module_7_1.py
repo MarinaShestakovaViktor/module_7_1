@@ -1,6 +1,3 @@
-from unicodedata import category
-from pprint import pprint
-from fileinput import close
 
 
 class Product:
@@ -22,15 +19,17 @@ class Shop:
         return text
 
 
+    
     def add(self, *products):
+        file = open(self.__file_name, 'a')
 
         for product in products:
             if str(product) not in self.get_products():
-                file = open(self.__file_name, 'a')
                 file.write(f'{str(product)}\n')
-                file.close()
+
             else:
                 print(f'Продукт {product} уже есть в магазине')
+        file.close()
 
 
 s1 = Shop()
